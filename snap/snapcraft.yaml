@@ -1,0 +1,33 @@
+name: ubuntu-excuses
+base: core24
+version: '0.2'
+summary: Command line tool to query current Ubuntu excuses
+description: Query the list of packages blocked in proposed and filter them
+ by component, name, team and more
+grade: stable
+confinement: strict
+
+parts:
+  visual-excuses:
+    source: https://github.com/mclemenceau/visual-excuses.git
+    plugin: python
+    build-environment:
+      - PYTHONPATH: "$SNAPCRAFT_PART_INSTALL/usr/lib/python3/dist-packages"
+    stage-packages:
+      - python3-wheel
+    python-packages:
+      - pyyaml
+      - requests
+      - tabulate
+      - pyvis
+
+apps:
+  ubuntu-excuses:
+    command: bin/ubuntu-excuses
+    plugs:
+      - network
+      - home
+      - desktop
+    environment:
+      LANG: C.UTF-8
+
