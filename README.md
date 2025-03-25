@@ -1,16 +1,21 @@
 # Ubuntu Excuses
 
-Once a package is uploaded to the Ubuntu archive (dput) it triggers a series of tests and rebuilds across multiple packages in the archive.
-Said package won't be able to migrate until it has build properly and all its dependencies have had successful tests
+Once a package is uploaded to the Ubuntu archive (dput) it triggers a series of
+tests and rebuilds across multiple packages in the archive. Said package won't
+be able to migrate until it has build properly on all supported architectures
+and all its dependencies have been successfuly tested.
 
-This is a very simple view but this is what we call package migration.
+This is a very simple view but this is how Ubuntu package migration works.
 
 When a package doesn't migrate, one would wonder why? what is its excuse?
 
 ## introducing ubuntu-excuses
 
-While visual-excuses allows to see the interactions between blocked packages in the proposed pocket, this tool offers a command line
-le This tool also uses the package per team mapping relevant to Canonical's internal teams which could help to show excuses per team. The content comes from http://reqorts.qa.ubuntu.com/reports/m-r-package-team-mapping.html
+While visual-excuses allows to see the interactions between blocked packages
+in the proposed pocket, this tool offers a command line approach. This tool also
+uses the package per team mapping relevant to Canonical's internal teams which
+could help to show excuses per team.
+The content comes from http://reqorts.qa.ubuntu.com/reports/m-r-package-team-mapping.html
 
 
 ## Installation
@@ -29,8 +34,9 @@ $> pip3 install .
 ```
 
 ## Usage
-By default if used without argument, ubuntu-excuses will show you the list of all the excuses.
-However multiple command line flags can be used to filter the relevant excuses
+By default if used without argument, ubuntu-excuses will show you the list of
+all the excuses. However multiple command line flags can be used to filter the
+relevant excuses
 
 ``` bash
 $> ubuntu-excuses --help
@@ -53,7 +59,8 @@ options:
   --json                Output in JSON format
 ```
 
-For example to list all the excuses affecting a specific distro team, here foundations you can simply run
+For example to list all the excuses affecting a specific distro team, here, the
+foundations team, you can simply run:
 
 ``` bash
 $> ubuntu-excuses --team foundations-bugs
@@ -81,7 +88,8 @@ $> ubuntu-excuses --team foundations-bugs
 
 ```
 
-In this other example, you can filter all the ftbfs affecting rust packages from older to more recent
+In this other example, you can filter all the ftbfs affecting rust packages from
+older to more recent
 
 ``` bash
 $> ubuntu-excuses --ftbfs --name rust --reverse
@@ -115,7 +123,7 @@ $> ubuntu-excuses --ftbfs --name rust --reverse
 ```
 
 ## How to Contribute
-Oddly this package is only used to build the snap, but if you want to add new 
-command line parameter or new functionaities, head over to
-https://github.com/mclemenceaa/visual-excuses and start a discussion by creating
-an issue https://github.com/mclemenceaa/visual-excuses/issues
+This github project is only used to build the ubuntu-excuses snap. All the logic
+is implemented on https://github.com/mclemenceaa/visual-excuses. If you want to
+contribute and add new parameters or other new feature, please go to
+https://github.com/mclemenceau/visual-excuses and open an issue at https://github.com/mclemenceaa/visual-excuses/issues
